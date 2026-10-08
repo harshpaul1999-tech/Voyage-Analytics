@@ -84,7 +84,7 @@ curl -X POST http://localhost:5000/recommend \
 
 ## Google Colab
 
-Open `notebooks/Travel_Analytics_EDA_and_MLOps.ipynb` in Colab, upload the three CSV files when prompted (or clone this repository), then use **Runtime → Run all**. The notebook follows the supplied EDA template, including structured UBM analysis and 20 documented charts.
+Open `notebooks/Travel_Analytics_EDA_and_MLOps.ipynb` in Colab, upload the three CSV files when prompted (or clone this repository), then use **Runtime → Run all**. The notebook follows the supplied EDA template, including structured UBM analysis and 22 documented charts.
 
 ## Reference layout and data
 
