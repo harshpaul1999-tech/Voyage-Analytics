@@ -1,0 +1,8 @@
+name: voyage-analytics
+
+entry_points:
+  train_all:
+    command: >-
+      python -m src.models.train_flight_price_model &&
+      python -m src.models.train_gender_model &&
+      python -m src.models.train_recommendation_model

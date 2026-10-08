@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: voyage-analytics-dashboard
+  labels:
+    app: voyage-analytics-dashboard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: voyage-analytics-dashboard
+  template:
+    metadata:
+      labels:
+        app: voyage-analytics-dashboard
+    spec:
+      containers:
+        - name: dashboard
+          image: voyage-analytics-dashboard:latest # Replace with your registry/image:tag in CI/CD.
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8501
+          env:
+            - name: FLASK_API_URL
+              value: http://voyage-analytics-api:5000
+          resources:
+            requests: {cpu: "100m", memory: "256Mi"}
+            limits: {cpu: "500m", memory: "512Mi"}
+          readinessProbe:
+            httpGet: {path: /_stcore/health, port: 8501}
+            initialDelaySeconds: 15
+            periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: voyage-analytics-dashboard
+spec:
+  selector:
+    app: voyage-analytics-dashboard
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8501
+  type: LoadBalancer

@@ -1,0 +1,5 @@
+resources:
+  - api-deployment.yaml
+  - streamlit-deployment.yaml
+  - hpa.yaml
+  - pvc.yaml

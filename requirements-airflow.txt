@@ -1,0 +1,3 @@
+# Install this in the separate Apache Airflow environment that hosts airflow/dags/.
+# Use the official Airflow constraints URL appropriate to your Python and Airflow version.
+apache-airflow>=2.8,<3.0

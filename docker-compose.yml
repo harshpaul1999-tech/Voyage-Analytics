@@ -1,0 +1,39 @@
+services:
+  ml-api:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.api
+    ports: ["5000:5000"]
+    environment:
+      MLFLOW_TRACKING_URI: http://mlflow:5001
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:5000/health')"]
+      interval: 20s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+    depends_on:
+      mlflow:
+        condition: service_started
+
+  streamlit-app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.streamlit
+    ports: ["8501:8501"]
+    environment:
+      FLASK_API_URL: http://ml-api:5000
+    depends_on:
+      ml-api:
+        condition: service_healthy
+
+  mlflow:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.mlflow
+    ports: ["5001:5001"]
+    volumes:
+      - mlflow-data:/mlflow
+
+volumes:
+  mlflow-data:
