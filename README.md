@@ -86,6 +86,22 @@ curl -X POST http://localhost:5000/recommend \
 
 Open `notebooks/Travel_Analytics_EDA_and_MLOps.ipynb` in Colab, upload the three CSV files when prompted (or clone this repository), then use **Runtime → Run all**. The notebook follows the supplied EDA template, including structured UBM analysis and 22 documented charts.
 
+### Individual submission notebooks
+
+The project has one GitHub repository and three independent, Colab-ready notebooks
+that follow the supplied EDA template. Each includes a project summary, this
+repository link, data understanding, chart reasoning, model implementation,
+evaluation, and a conclusion:
+
+- `notebooks/Flight_Price_Regression_Capstone.ipynb`
+- `notebooks/Historic_Label_Classification_Capstone.ipynb`
+- `notebooks/Hotel_Recommendation_Capstone.ipynb`
+
+The repository is the single source of truth for the entire MLOps deliverable:
+training and inference code, `models/*.pkl` artifacts, Flask API, Streamlit app,
+Docker configuration, requirements, Kubernetes deployment manifests, Airflow DAG,
+Jenkins pipeline, MLflow integration, notebooks, tests, and reports.
+
 ## Reference layout and data
 
 The requested project structure was adapted from the supplied [Voyage Analytics reference repository](https://github.com/pjindal01/Voyage-Analytics). The implementation, training code, API validation, model artefacts, reporting, workflow automation, and documentation in this repository were completed for the provided `travel_capstone` data.
